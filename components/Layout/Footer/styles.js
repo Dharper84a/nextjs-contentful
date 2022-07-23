@@ -10,10 +10,11 @@ const fxHeartPulse = keyframes`
 `
 
 export const FooterContainer = styled.footer`
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
+    margin-top: 4rem;
     background: ${({theme}) => theme.colors.background.dark};
 `
 

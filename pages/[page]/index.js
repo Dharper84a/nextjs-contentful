@@ -1,10 +1,16 @@
 import * as React from 'react';
 import deliveryClient from '../../lib/datasource/contentful/delivery';
 
+import Layout from '../../components/Layout';
+import PageSections from '../../components/PageSections';
 
 const PagePath = (props) => {
     console.log('PagePath', props);
-    return <div>page</div>
+    return (
+        <Layout>
+            <PageSections sections={props.fields?.pageSections} />
+        </Layout>
+    )
 }
 
 export default PagePath;

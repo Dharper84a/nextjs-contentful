@@ -27,7 +27,7 @@ export const Inner = styled.div`
         a {
             color: ${({theme}) => theme.colors.onyx};
             font-size: ${({theme}) => theme.helpers.fontClamp(24, 36)};
-            font-weight: 200;
+            font-weight: 400;
             &::after {
                 display: none;
             }

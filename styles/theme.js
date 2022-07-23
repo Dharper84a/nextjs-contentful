@@ -54,6 +54,7 @@ const LAYOUT_REF = {
 };
 const LAYOUT_CONTAINERS = {
     container: {
+        position: 'relative',
         width: '100%',
         maxWidth: LAYOUT_REF.maxSiteWidth + 'px',
         height: '100%',
@@ -88,6 +89,16 @@ const MEDIA_DEVICES = {
     largeMacs: `(max-width: ${MEDIA_SIZE_REF.largeComputer})`,
 }
 
+const TYPOGRAPHY = {
+    bodyFont: 'Lato',
+    headerFont: 'Lato',
+    bodyFontSize: '18px',
+    headerFontSizes: {
+        max: '84px',
+        min: '20px'
+    }
+}
+
 const fontClamp = (min, max) => {
     const slope = (max - min) / (LAYOUT_REF.maxPageWidth - LAYOUT_REF.minSiteWidth);
     const yIntersection = -LAYOUT_REF.minSiteWidth * slope + min;
@@ -99,6 +110,7 @@ const fontClamp = (min, max) => {
 
 export const theme = {
     colors: COLORS,
+    fonts: TYPOGRAPHY,
     layout: LAYOUT,
     layers: LAYERS,
     devices: MEDIA_DEVICES,
