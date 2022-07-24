@@ -7,6 +7,9 @@ const COLOR_REF = {
     matteBlack: "#28282B",
     onyx: "#353935",
     charcoal: "#36454F",
+    // grays
+    gray: "#D3D3D3",
+    mediumGray: "#EFEFEF",
     // greens
     pastelGreen: "#C1E1C1",
     // blues

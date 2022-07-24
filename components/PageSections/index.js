@@ -11,11 +11,12 @@ import TextWithGraphic from './TextWithGraphic';
 
 // Card Group Sections
 import CardGrid from './CardGrid';
+import FeaturedPerson from './FeaturedPerson';
 
 const PageSections = ({sections}) => {
     
     const getSection = (section, key) => {
-        console.log('Section', section);
+        // console.log('Section', section);
         switch(section.sys.contentType.sys.id) {
             case 'pageSectionHeroFullWidth':
                 return <HeroFullWidth {...section} key={key} />
@@ -27,7 +28,8 @@ const PageSections = ({sections}) => {
                 return <TextWithGraphic {...section} key={key} />
             case 'pageSectionCardGrid':
                 return <CardGrid {...section} key={key} />
-            
+            case 'pageSectionFeaturedPerson':
+                return <FeaturedPerson {...section} key={key} />
             default: return <div key={key}>SECTION NOT FOUND</div>
         }
     }

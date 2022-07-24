@@ -28,6 +28,10 @@ export const Inner = styled.div`
             color: ${({theme}) => theme.colors.onyx};
             font-size: ${({theme}) => theme.helpers.fontClamp(24, 36)};
             font-weight: 400;
+            &:hover {
+                text-decoration: none;
+                border: none;
+            }
             &::after {
                 display: none;
             }

@@ -33,6 +33,12 @@ export const GlobalStyle = createGlobalStyle`
         margin-top: 2rem;
         font-size: ${({theme}) => theme.helpers.fontClamp(30, 36)};
     }
+    h3 {
+        font-size: ${({theme}) => theme.helpers.fontClamp(22, 28)};
+    }
+    h4 {
+        font-size: ${({theme}) => theme.helpers.fontClamp(18, 20)};
+    }
     p {
         margin: 0.25rem 0 1rem 0;
         padding: 0;

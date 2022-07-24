@@ -32,17 +32,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-    const entry = await deliveryClient.entry('page', 'slug', params.page);
-    
-    if(entry) {
+    return await deliveryClient.entry('page', 'slug', params.page).then((entry) => {
         return {
             props: { ...entry },
             revalidate: 30,
         }
-    }
-
-    return {
-        notFound: true
-    }
-   
+    }).catch((err) => {
+        console.log('ERROR', err)
+        return { notFound: true }
+    });
 }

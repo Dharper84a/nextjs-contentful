@@ -6,7 +6,7 @@ import RichTextRenderer from '../../Common/RichTextRenderer';
 import { TextWithGraphicContainer, Inner } from './styles';
 
 const TextWithGraphic = (props) => {
-    console.log('TextWithGraphic', props);
+    // console.log('TextWithGraphic', props);
     const image = props.fields.graphic.fields || false;
     return(
         <TextWithGraphicContainer>
