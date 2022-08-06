@@ -11,7 +11,6 @@ const getImage = (imageField) => {
     }
 }
 const LeadershipCard = (props) => {
-    console.log('Card', props);
     const image = props?.portrait ? getImage(props.portrait) : false;
     return (
         <Card>
@@ -22,15 +21,22 @@ const LeadershipCard = (props) => {
                     blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8+PDgfwAIMgNkB0otSQAAAABJRU5ErkJggg=='
                     placeholder='blur'
                     width={400}
-                    height={500}
+                    height={300}
                     alt={image.alt}
                 />
+                <div>
+                    <h4>{props.position}</h4>
+                    <h3>{props.name}</h3>
+                </div>
             </figure>
             }
-            <div>
-                <h4>{props.position}</h4>
-                <h3>{props.name}</h3>
-            </div>
+            {!image &&
+                <div>
+                    <h4>{props.position}</h4>
+                    <h3>{props.name}</h3>
+                </div>
+            }
+            
         </Card>
     )
 }

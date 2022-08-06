@@ -12,6 +12,7 @@ const COLOR_REF = {
     mediumGray: "#EFEFEF",
     // greens
     pastelGreen: "#C1E1C1",
+    lightPastelGreen: '#D9EED9',
     // blues
     blue: "#0096FF",
     bluePurple: "#5D3FD3",
@@ -30,6 +31,8 @@ const COLOR_APP = {
     background: {
         dark: COLOR_REF.matteBlack,
         light: COLOR_REF.offWhite,
+        gray: COLOR_REF.mediumGray,
+        green: COLOR_REF.pastelGreen,
     }
 };
 const COLORS = { ...COLOR_REF, ...COLOR_APP };
