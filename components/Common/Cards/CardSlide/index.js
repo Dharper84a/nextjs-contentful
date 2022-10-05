@@ -12,7 +12,7 @@ const CardSlide = (props) => {
     const [state, setState] = React.useState("loading");
     const [cardData, setCardData] = React.useState(null);
    
-    console.log('Card Props', props);
+    // console.log('Card Props', props);
 
     React.useEffect(() => {
         if (cardData === null) return () => {};
@@ -23,7 +23,7 @@ const CardSlide = (props) => {
  
         if(image.isReady) setState('ready');
         
-        console.log(cardData);
+        // console.log(cardData);
         return () => {};
     }, [cardData, image]);
 

@@ -20,7 +20,7 @@ const classFormatter = (cardType) => {
 };
 const Slider = (props) => {
     const slider = useSlider();
-    console.log("FSS", props);
+    // console.log("FSS", props);
     React.useEffect(() => {
         if (slider.isReady === false) {
             if (props.fields?.slides) {

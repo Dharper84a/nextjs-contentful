@@ -48,7 +48,7 @@ const useImage = (_source, _options = {}) => {
         if(!_source) return () => {}
         if(Object.keys(_options).length <= 0) return () => {}
 
-        console.log('useImage.useEffect | Initial Load')
+        // console.log('useImage.useEffect | Initial Load')
         setImageHandler(_source, _options);
 
         return () => {}

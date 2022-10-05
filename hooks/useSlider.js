@@ -37,7 +37,7 @@ const reducer = (state, action) => {
 
     switch (action.type) {
         case "INIT":
-            console.log(action);
+            // console.log(action);
             return {
                 ...state,
                 activeSlide: 0,
@@ -67,7 +67,7 @@ const reducer = (state, action) => {
                 updatedXOffset =
                     state.xOffset + nodes[state.activeSlide].offsetWidth;
             } else {
-                console.log("UNABLE TO FIND SLIDE INDEX");
+                // console.log("UNABLE TO FIND SLIDE INDEX");
             }
 
             if(validatePosition(nodes, updatedXOffset)) {
@@ -95,7 +95,7 @@ const reducer = (state, action) => {
                 updatedXOffset =
                     state.xOffset - nodes[state.activeSlide].offsetWidth;
             } else {
-                console.log("UNABLE TO FIND SLIDE INDEX");
+                // console.log("UNABLE TO FIND SLIDE INDEX");
             }
             
             if(validatePosition(nodes, updatedXOffset)) {

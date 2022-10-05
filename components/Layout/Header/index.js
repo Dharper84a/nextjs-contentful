@@ -14,9 +14,7 @@ const Header = (props) => {
     const { ref, inView, entry } = useInView({
         triggerOnce: true,
     });
-    const [menuOpen, setMenuOpen] = React.useState(false);
-    const [menuTransitionState, setMenuTransitionState] =
-        React.useState("normal");
+
     const [menuState, setMenuState] = React.useState('closed');
 
     const openingDuration = 500;
@@ -36,7 +34,7 @@ const Header = (props) => {
 
     React.useEffect(() => {
         let ignore = false;
-
+        
         if(menuState === 'opening') {
             setTimeout(() => {
                 if(!ignore) {
@@ -56,7 +54,8 @@ const Header = (props) => {
         
     }, [menuState])
     return (
-        <ComponentBox>
+        <>
+        <ComponentBox transitionState={menuState}>
             <SiteIcon>
                 <Link href="/">
                     <a
@@ -78,16 +77,19 @@ const Header = (props) => {
                     <FontAwesomeIcon icon={faBars} />
                 </button>
             </MenuButtonBox>
-            {menuOpen && (
-                <Overlay
-                    type="drawer"
-                    transitionState={menuTransitionState}
-                    onCloseOverlay={toggleMenu}
-                >
-                    <HeaderMenu onCloseOverlay={toggleMenu} />
-                </Overlay>
-            )}
+            
         </ComponentBox>
+        {menuState !== 'closed' && (
+            <Overlay
+                type="drawer"
+                transitionState={menuState}
+                transitionTimings={{opening: openingDuration, closing: closingDuration}}
+                onCloseOverlay={toggleMenu}
+            >
+                <HeaderMenu onCloseOverlay={toggleMenu} />
+            </Overlay>
+        )}
+        </>
     );
 };
 

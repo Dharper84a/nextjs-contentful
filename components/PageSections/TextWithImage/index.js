@@ -14,7 +14,7 @@ const TextWithImage = (props) => {
     const richText = props.fields?.text;
     const imageOnLeft = props.fields?.imageOnLeft;
     const animationClass = imageOnLeft ? 'slide-in-left' : 'slide-in-right';
-    console.log(imageOnLeft);
+    // console.log(imageOnLeft);
     return(
         <TextWithImageContainer imageOnLeft={imageOnLeft}>
             <Inner imageOnLeft={imageOnLeft} className={inView ? animationClass : `${animationClass}-niv`}>

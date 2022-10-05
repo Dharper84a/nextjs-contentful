@@ -16,7 +16,7 @@ const getImage = (imageField) => {
     }
 }
 const FeaturedPerson = (props) => {
-    console.log('Featured Person', props);
+    // console.log('Featured Person', props);
     const image = props?.fields?.image ? getImage(props.fields.image) : false;
     return(
         <FeaturedPersonContainer>
