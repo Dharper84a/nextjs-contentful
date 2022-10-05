@@ -1,35 +1,94 @@
-import * as React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import * as React from "react";
+import { useInView } from "react-intersection-observer";
+import Link from "next/link";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import {HeaderContainer, Inner} from './styles'
+import HeaderMenu from "../../Menus/Header";
+import { Overlay } from "..";
+
+import { ComponentBox, SiteIcon, MenuButtonBox, MenuButton } from "./styles";
 
 const Header = (props) => {
+    const { ref, inView, entry } = useInView({
+        triggerOnce: true,
+    });
+    const [menuOpen, setMenuOpen] = React.useState(false);
+    const [menuTransitionState, setMenuTransitionState] =
+        React.useState("normal");
+    const [menuState, setMenuState] = React.useState('closed');
 
-    return(
-        <HeaderContainer>
-            <Inner>
-                <div>
-                    <figure>
+    const openingDuration = 500;
+    const closingDuration = 300;
+
+    const toggleMenu = () => {
+        switch(menuState) {
+            case 'closed':
+                setMenuState('opening');
+                break;
+            case 'opened':
+                setMenuState('closing');
+                break;
+        }
+        
+    };
+
+    React.useEffect(() => {
+        let ignore = false;
+
+        if(menuState === 'opening') {
+            setTimeout(() => {
+                if(!ignore) {
+                    setMenuState('opened');
+                }
+            }, openingDuration);
+        } else if(menuState === 'closing') {
+            setTimeout(() => {
+                if(!ignore) {
+                    setMenuState('closed');
+                }
+            }, closingDuration);
+        }
+        return () => {
+            ignore = true;
+        }
+        
+    }, [menuState])
+    return (
+        <ComponentBox>
+            <SiteIcon>
+                <Link href="/">
+                    <a
+                        title="Navigate to Westlink Church of Christ homepage"
+                        className={inView ? "in-view" : "not-in-view"}
+                        ref={ref}
+                    >
                         <Image
                             src="/images/Icon-Logo-256x256.png"
                             alt=""
                             width={48}
                             height={48}
                         />
-                    </figure>
-                    <Link href="/">
-                        <a title="Navigate to Westlink Church of Christ homepage">
-                            Westlink Church of Christ
-                        </a>
-                    </Link>
-                </div>
-                <nav>
-                    Menu
-                </nav>
-            </Inner>
-        </HeaderContainer>
-    )
-}
+                    </a>
+                </Link>
+            </SiteIcon>
+            <MenuButtonBox>
+                <button onClick={toggleMenu} aria-label="open menu drawer">
+                    <FontAwesomeIcon icon={faBars} />
+                </button>
+            </MenuButtonBox>
+            {menuOpen && (
+                <Overlay
+                    type="drawer"
+                    transitionState={menuTransitionState}
+                    onCloseOverlay={toggleMenu}
+                >
+                    <HeaderMenu onCloseOverlay={toggleMenu} />
+                </Overlay>
+            )}
+        </ComponentBox>
+    );
+};
 
 export default Header;

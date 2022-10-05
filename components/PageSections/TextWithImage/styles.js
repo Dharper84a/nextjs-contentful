@@ -1,53 +1,69 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
+const cssImageLeft = css`
+    grid-template-columns: 0.4fr 0.6fr;
+    figure {
+        order: 1;
+    }
+    aside {
+        order: 2;
+    }
+`
+const cssImageRight = css`
+    grid-template-columns: 0.6fr 0.4fr;
+    figure {
+        order: 2;
+    }
+    aside {
+        order: 1;
+    }
+`
+
+const cssImageLeftBgColor = css`
+    background-color: ${({theme}) => theme.colors.background.dark};
+`
+const cssImageRightBgColor = css`
+    background-color: ${({theme}) => theme.colors.background.deepGreen};
+`
 export const TextWithImageContainer = styled.div`
     ${({theme}) => theme.layout.container};
+    display: flex;
+    overflow: hidden;
     margin: 0 auto;
-    padding: 3rem 0;
+    
+    ${props => props.imageOnLeft ? cssImageLeftBgColor : cssImageRightBgColor};
 `
 
 export const Inner = styled.div`
     ${({theme}) => theme.layout.content};
+    margin-top: 45px;
+    margin-bottom: 45px;
     position: relative;
+    z-index: ${({theme}) => theme.layers.content};
     display: grid;
-    grid-template-columns: 0.33fr 0.66fr;
-    gap: 0;
-    
+    gap: 90px;
     figure {
+        position: relative;
         display: flex;
         width: 100%;
         max-width: 800px;
-        aspect-ratio: 2;
-        border-radius: 0.25rem;
-        * {
-            border-radius: 0.25rem;
+        height: 400px;
+        border-radius: 3px;
+        span {
+            border-radius: 3px;
         }
     }
     aside {
-        position: relative;
-        z-index: ${({theme}) => theme.layers.content + 10};
         width: 100%;
-        max-width: 800px;
-        height: fit-content;
-        margin: 2rem 0 0 -8rem;
-        padding: 1rem;
-        background-color: ${({theme}) => theme.colors.background.light};
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-        border-radius: 0.25rem;
-    }
-    @media ${({theme}) => theme.devices.ipads} {
-        gap: 1.5rem;
-        aside, figure {
-            max-width: 100%;
-            margin: 0;
+        max-width: 650px;
+        height: 400px;
+        h2, p {
+            color: ${({theme}) => theme.colors.text.light};
+        }
+        h2 {
+            margin: 0 0 16px 0;
         }
     }
-    @media ${({theme}) => theme.devices.iphones} {
-        grid-template-columns: 1fr;
-        aside {
-            width: 80%;
-            margin-top: -6rem;
-            margin-left: 1rem;
-        }
-    }
+    ${props => props.imageOnLeft ? cssImageLeft : cssImageRight};
+    
 `

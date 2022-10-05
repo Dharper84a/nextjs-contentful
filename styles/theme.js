@@ -7,12 +7,16 @@ const COLOR_REF = {
     matteBlack: "#28282B",
     onyx: "#353935",
     charcoal: "#36454F",
+    offBlack: '#0A0C0E',
     // grays
     gray: "#D3D3D3",
     mediumGray: "#EFEFEF",
+    darkGray: '#9A9A9A',
     // greens
     pastelGreen: "#C1E1C1",
     lightPastelGreen: '#D9EED9',
+    darkPastelGreen: '#90ba90',
+    deepGreen: '#70AC70',
     // blues
     blue: "#0096FF",
     bluePurple: "#5D3FD3",
@@ -20,6 +24,7 @@ const COLOR_REF = {
     // accents
     pink: "#DA70D6",
     rubyRed: "#E0115F",
+    tomato: "#FF6347",
 };
 
 const COLOR_APP = {
@@ -29,10 +34,11 @@ const COLOR_APP = {
         link: COLOR_REF.blueSteel
     },
     background: {
-        dark: COLOR_REF.matteBlack,
+        dark: COLOR_REF.offBlack,
         light: COLOR_REF.offWhite,
         gray: COLOR_REF.mediumGray,
         green: COLOR_REF.pastelGreen,
+        deepGreen: COLOR_REF.deepGreen,
     }
 };
 const COLORS = { ...COLOR_REF, ...COLOR_APP };
@@ -48,8 +54,8 @@ const LAYERS = {
 
 const LAYOUT_REF = {
     maxSiteWidth: 1920,
-    minSiteWidth: 390,
-    maxPageWidth: 1800,
+    minSiteWidth: 350,
+    maxPageWidth: 2560,
     pagePadding: {
         top: 0,
         right: '6%',
@@ -62,7 +68,6 @@ const LAYOUT_CONTAINERS = {
     container: {
         position: 'relative',
         width: '100%',
-        maxWidth: LAYOUT_REF.maxSiteWidth + 'px',
         height: '100%',
         margin: '0 auto',
     },
@@ -88,11 +93,11 @@ const MEDIA_SIZE_REF = {
 }
 
 const MEDIA_DEVICES = {
-    iphones: `(max-width: ${MEDIA_SIZE_REF.mobile})`,
-    ipads: `(max-width: ${MEDIA_SIZE_REF.tablet})`,
-    smallMacs: `(max-width: ${MEDIA_SIZE_REF.smallComputer})`,
-    mediumMacs: `(max-width: ${MEDIA_SIZE_REF.mediumComputer})`,
-    largeMacs: `(max-width: ${MEDIA_SIZE_REF.largeComputer})`,
+    iphones: `(min-width: ${MEDIA_SIZE_REF.mobile})`,
+    ipads: `(min-width: ${MEDIA_SIZE_REF.tablet})`,
+    smallMacs: `(min-width: ${MEDIA_SIZE_REF.smallComputer})`,
+    mediumMacs: `(min-width: ${MEDIA_SIZE_REF.mediumComputer})`,
+    largeMacs: `(min-width: ${MEDIA_SIZE_REF.largeComputer})`,
 }
 
 const TYPOGRAPHY = {
@@ -114,13 +119,24 @@ const fontClamp = (min, max) => {
     return output;
 };
 
+const lineClamp = (lines) => {
+    return {
+        display: '-webkit-box',
+        '-webkit-line-clamp': `${lines}`,
+        '-webkit-box-orient': 'vertical',
+        overflow: 'hidden'
+    }
+}
+
 export const theme = {
     colors: COLORS,
     fonts: TYPOGRAPHY,
     layout: LAYOUT,
     layers: LAYERS,
     devices: MEDIA_DEVICES,
+    device: MEDIA_DEVICES,
     helpers: {
-        fontClamp: fontClamp
+        fontClamp: fontClamp,
+        lineClamp: lineClamp
     }
 };

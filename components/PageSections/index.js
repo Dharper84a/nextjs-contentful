@@ -12,6 +12,7 @@ import TextWithGraphic from './TextWithGraphic';
 // Card Group Sections
 import CardGrid from './CardGrid';
 import FeaturedPerson from './FeaturedPerson';
+import Slider from './Slider';
 
 const PageSections = ({sections}) => {
     
@@ -30,6 +31,8 @@ const PageSections = ({sections}) => {
                 return <CardGrid {...section} key={key} />
             case 'pageSectionFeaturedPerson':
                 return <FeaturedPerson {...section} key={key} />
+            case 'pageSectionSlider':
+                return <Slider {...section} key={key} />
             default: return <div key={key}>SECTION NOT FOUND</div>
         }
     }

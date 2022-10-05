@@ -3,7 +3,8 @@ import * as React from 'react';
 import Header from './Header';
 import Footer from './Footer'
 
-import { Website } from './styles';
+import { Website, OverlayContainer, OverlayBackground, OverlayForeground } from './styles';
+import { createPortal } from 'react-dom';
 
 const Layout = (props) => {
 
@@ -19,3 +20,25 @@ const Layout = (props) => {
 }
 
 export default Layout;
+
+
+export const Portal = (props) => {
+   return createPortal(props.children, document.getElementById(props.type));
+}
+
+export const Overlay = (props) => {
+    const overlayType = props?.type || 'modal';
+    const transitionState = props?.transitionState || 'normal';
+    return (
+        <Portal type={overlayType}>
+            <OverlayContainer>
+                <OverlayBackground onClick={props.onCloseOverlay} transitionState={transitionState} className={`overlay-${overlayType}`} />
+                
+
+                <OverlayForeground overlayType={overlayType} transitionState={transitionState}>
+                        {props.children}
+                </OverlayForeground>
+            </OverlayContainer>
+        </Portal>
+    )
+}
