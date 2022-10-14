@@ -1,8 +1,18 @@
 import styled, { css,keyframes } from "styled-components";
 import {fxHideMenuButtonBox, fxShowMenuButtonBox, fxFlickerIn} from '../../../styles/globalStyles';
 
-export const SiteIcon = styled.div`
+export const SiteIdentity = styled.div`
     display: none;
+    @media ${({theme}) => theme.device.tablets} {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        align-items: center;
+        gap: 32px;
+        a {
+            color: ${({theme}) => theme.colors.text.dark};
+            font-size: ${({theme}) => theme.helpers.fontClamp(28, 42)};
+        }
+    }
 `
 
 export const MenuButtonBox = styled.div`
@@ -23,6 +33,21 @@ export const MenuButtonBox = styled.div`
         background-color: transparent;
         border: none;
     }
+    @media ${({theme}) => theme.device.tablets} {
+       position: initial;
+       top: initial;
+       align-items: center;
+       width: 64px;
+       height: 64px;
+       padding-top: 0;
+       border-radius: 4px;
+       background-color: ${({ theme }) => theme.colors.blueSteel};
+       button {
+            display: flex;
+            align-items: center;
+            color: ${({theme}) => theme.colors.text.light};
+        }
+    }
 `
 
 export const ComponentBox = styled.header`
@@ -41,7 +66,21 @@ export const ComponentBox = styled.header`
     animation: ${fxShowMenuButtonBox} 0.1s linear 0.2s both;
     `}
     @media ${({theme}) => theme.device.tablets} {
+        ${({theme}) => theme.layout.content};
+        top: 0;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-areas: "I I I B";
+        justify-content: space-between;
+        align-items: center;
         height: 80px;
+        box-shadow: 0px 10px 28px rgba(10,12,14,.21);
+        ${SiteIdentity} {
+            grid-area: I;
+        }
+        ${MenuButtonBox} {
+            grid-area: B;
+        }
     }
     
 `;

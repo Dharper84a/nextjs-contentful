@@ -21,26 +21,38 @@ export const FooterContainer = styled.footer`
 export const Inner = styled.div`
     ${({theme}) => theme.layout.content};
     display: grid;
+    grid-template-areas:
+        "NAV ADDRESS"
+        "COPY COPY";
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    gap: 32px 16px;
+    padding-top: 32px;
+    padding-bottom: 100px;
     nav {
-        display: flex;
-        gap: 1rem;
+        grid-area: NAV;
+        a {
+            display: block;
+            margin-bottom: 8px;
+        }
     }
-    div {
-        display: flex;
-        justify-content: flex-end;
-        column-gap: 0.5rem;
+    address {
+        grid-area: ADDRESS;
+        text-align: left;
+        color: ${({theme}) => theme.colors.text.light};
+        font-size: ${({theme}) => theme.helpers.fontClamp(14, 18)};
+        font-style: normal;
+        line-height: 1.5;
+    }
+    div.legal-copy {
+        grid-area: COPY;
+        text-align: center;
         p {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             color: ${({theme}) => theme.colors.text.light};
-            font-size: ${({theme}) => theme.helpers.fontClamp(12,14)};
+            font-size: ${({theme}) => theme.helpers.fontClamp(14, 18)};
+            margin: 0 0 4px 0;
             svg {
+                padding: 0 4px;
                 width: 16px;
                 color: ${({theme}) => theme.colors.rubyRed};
                 animation: ${fxHeartPulse} 2s infinite;

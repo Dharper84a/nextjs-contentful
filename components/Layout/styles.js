@@ -15,6 +15,11 @@ export const Website = styled.div`
         z-index: ${({ theme }) => theme.layers.content};
         height: fit-content;
     }
+    @media ${({theme}) => theme.device.tablets} {
+        main {
+            margin-top: 80px;
+        }
+    }
 `;
 export const OverlayContainer = styled.div`
     position: absolute;

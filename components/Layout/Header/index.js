@@ -8,7 +8,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import HeaderMenu from "../../Menus/Header";
 import { Overlay } from "..";
 
-import { ComponentBox, SiteIcon, MenuButtonBox, MenuButton } from "./styles";
+import { ComponentBox, SiteIdentity, MenuButtonBox, MenuButton } from "./styles";
 
 const Header = (props) => {
     const { ref, inView, entry } = useInView({
@@ -50,22 +50,24 @@ const Header = (props) => {
     return (
         <>
         <ComponentBox transitionState={menuState}>
-            <SiteIcon>
+            <SiteIdentity>
+                <Image 
+                    src="/images/Icon-Logo-256x256.png"
+                    alt=""
+                    width={48}
+                    height={48}
+                />
                 <Link href="/">
                     <a
                         title="Navigate to Westlink Church of Christ homepage"
                         className={inView ? "in-view" : "not-in-view"}
                         ref={ref}
                     >
-                        <Image
-                            src="/images/Icon-Logo-256x256.png"
-                            alt=""
-                            width={48}
-                            height={48}
-                        />
+                        
+                        Westlink Church of Christ
                     </a>
                 </Link>
-            </SiteIcon>
+            </SiteIdentity>
             <MenuButtonBox>
                 <button onClick={toggleMenu} aria-label="open menu drawer">
                     <FontAwesomeIcon icon={faBars} />
