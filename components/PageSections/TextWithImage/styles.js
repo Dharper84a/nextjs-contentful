@@ -19,11 +19,48 @@ const cssImageRight = css`
     }
 `
 
-const cssImageLeftBgColor = css`
-    background-color: ${({theme}) => theme.colors.background.dark};
-`
-const cssImageRightBgColor = css`
-    background-color: ${({theme}) => theme.colors.background.deepGreen};
+export const ComponentBox = styled.div`
+    ${({theme}) => theme.layout.content};
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: ${({theme, bgColor}) => theme.colors.background[bgColor]};
+    figure {
+        position: relative;
+        height: 33vh;
+        max-width: 1024px;
+    }
+    aside {
+        width: 100%;
+        max-width: 650px;
+        h2, p {
+            color: ${({theme}) => theme.colors.text.light};
+        }
+        h2 {
+            margin: 24px 0 16px 0;
+        }
+    }
+    @media ${({theme}) => theme.device.largePhones} {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        padding-top: 48px;
+        padding-bottom: 48px;
+        figure {
+            height: 33vh;
+            min-height: 300px;
+        }
+        aside {
+            h2 {
+                margin-top: 0;
+            }
+        }
+    }
+    @media ${({theme}) => theme.device.largePhones} {
+        gap: 48px;
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
 `
 export const TextWithImageContainer = styled.div`
     ${({theme}) => theme.layout.container};

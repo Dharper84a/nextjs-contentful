@@ -23,9 +23,9 @@ const Header = (props) => {
     const toggleMenu = () => {
         switch(menuState) {
             case 'closed':
-                setMenuState('opening');
+                setMenuState('open');
                 break;
-            case 'opened':
+            case 'open':
                 setMenuState('closing');
                 break;
         }
@@ -35,13 +35,7 @@ const Header = (props) => {
     React.useEffect(() => {
         let ignore = false;
         
-        if(menuState === 'opening') {
-            setTimeout(() => {
-                if(!ignore) {
-                    setMenuState('opened');
-                }
-            }, openingDuration);
-        } else if(menuState === 'closing') {
+        if(menuState === 'closing') {
             setTimeout(() => {
                 if(!ignore) {
                     setMenuState('closed');

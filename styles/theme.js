@@ -98,6 +98,11 @@ const MEDIA_DEVICES = {
     smallMacs: `(min-width: ${MEDIA_SIZE_REF.smallComputer})`,
     mediumMacs: `(min-width: ${MEDIA_SIZE_REF.mediumComputer})`,
     largeMacs: `(min-width: ${MEDIA_SIZE_REF.largeComputer})`,
+    largePhones: `(min-width: ${MEDIA_SIZE_REF.mobile})`,
+    tablets: `(min-width: ${MEDIA_SIZE_REF.tablet})`,
+    smallMonitor: `(min-width: ${MEDIA_SIZE_REF.smallComputer})`,
+    mediumMonitor: `(min-width: ${MEDIA_SIZE_REF.mediumComputer})`,
+    largeMonitor: `(min-width: ${MEDIA_SIZE_REF.largeComputer})`,
 }
 
 const TYPOGRAPHY = {

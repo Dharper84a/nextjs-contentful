@@ -10,9 +10,11 @@ const fxLoading = keyframes`
 `
 
 export const CardComponent = styled.div`
-    width: 350px;
-    height: fit-content;
-    
+    display: grid;
+    align-content: space-between;
+    width: 300px;
+    height: 575px;
+    min-height: fit-content;
     margin: 0 4rem 0 0;
     overflow: hidden;
     transition: all 0.27s ease;

@@ -13,7 +13,7 @@ import FullScreenSlideCard from "../../Common/Cards/FullScreenSlide";
 import CardSlide from "../../Common/Cards/CardSlide";
 
 // Styles
-import { Component, ComponentContent } from "./styles";
+import { ComponentBox } from "./styles";
 
 const classFormatter = (cardType) => {
     return cardType.replace(" ", "-").toLowerCase();
@@ -49,8 +49,7 @@ const Slider = (props) => {
     }, [props, slider]);
 
     return (
-        <Component>
-            <ComponentContent>
+        <ComponentBox>
                 <header>
                     {props.fields?.heading && <h2>{props.fields?.heading}</h2>}
                     <p>Join us at one or more (or all) of our events. Come as you are we welcome everyone.</p>
@@ -81,12 +80,7 @@ const Slider = (props) => {
                     <div className="loading">Loading slides...</div>
                 )}
                 {slider.isReady && slider.slider()}
-             
-            </ComponentContent>
-            
-
-
-        </Component>
+        </ComponentBox>
     );
 };
 

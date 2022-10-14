@@ -46,11 +46,8 @@ const fullScreenNav = css`
 `
 
 const cardNav = css`
-    position: absolute;
-    z-index: ${({theme}) => theme.layers.content + 1};
-    bottom: 0;
-    right: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: space-between;
     gap: 32px;
@@ -60,34 +57,43 @@ const cardNav = css`
         font-size: 24px;
         border: 3px solid ${({theme}) => theme.colors.pastelGreen};
         border-radius: 8px;
-        cursor: pointer;
         background: ${({theme}) => theme.colors.pastelGreen};
         transition: all 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000);
-        &:hover {
-            background: ${({theme}) => theme.colors.lightPastelGreen};
-            transform: scale(1.025) translateZ(50px);
-            box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
-        }
         &:disabled {
             color: ${({theme}) => theme.colors.darkGray};
             background: ${({theme}) => theme.colors.mediumGray};
             border-color: ${({theme}) => theme.colors.gray};
             animation: ${fxScaleOutCenter} 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-            cursor: default;
             transform: none;
             box-shadow: none;
         }
     }
-    
+    @media ${({theme}) => theme.device.tablets} {
+        position: absolute;
+        z-index: ${({theme}) => theme.layers.content + 1};
+        bottom: 0;
+        right: 0;
+    }
+    @media ${({theme}) => theme.device.smallMonitors} {
+        button {
+            cursor: pointer;
+            &:hover {
+                background: ${({theme}) => theme.colors.lightPastelGreen};
+                transform: scale(1.025) translateZ(50px);
+                box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
+            }
+            &:disabled {
+                cursor: default;
+            }
+        }
+    }
 `
-export const Component = styled.div`
-    ${({theme}) => theme.layout.container};
-    padding-top: 90px;
-`
-
-export const ComponentContent = styled.section`
+export const ComponentBox = styled.section`
     ${({theme}) => theme.layout.content};
     position: relative;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: ${({theme, bgColor}) => theme.colors.background[bgColor]};
     header {
         position: relative;
         margin: 0 0 24px 0;
@@ -105,6 +111,14 @@ export const ComponentContent = styled.section`
                 ${cardNav}
             }
         }
+    }
+    @media ${({theme}) => theme.device.largePhones} {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+    @media ${({theme}) => theme.device.largePhones} {
+        padding-top: 64px;
+        padding-bottom: 64px;
     }
     
 `

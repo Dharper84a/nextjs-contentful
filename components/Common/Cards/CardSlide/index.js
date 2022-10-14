@@ -39,27 +39,29 @@ const CardSlide = (props) => {
     }, [props.sys.id]);
     return (
         <CardComponent componentState={state}>
-            <figure>
-                {image.isReady ? (
-                <Image
-                    src={image.image.src}
-                    alt={image.image.alt || ''}
-                    layout="fill"
-                    objectFit="cover"
-                />
-                ):(
-                <Image
-                    src="/images/Icon-Logo-256x256.png"
-                    alt=""
-                    width={48}
-                    height={48}
-                />
-                )}
-            </figure>
-            <h3>{cardData?.heading}</h3>
-            <p>
-                {cardData?.excerpt}
-            </p>
+            <div>
+                <figure>
+                    {image.isReady ? (
+                    <Image
+                        src={image.image.src}
+                        alt={image.image.alt || ''}
+                        layout="fill"
+                        objectFit="cover"
+                    />
+                    ):(
+                    <Image
+                        src="/images/Icon-Logo-256x256.png"
+                        alt=""
+                        width={48}
+                        height={48}
+                    />
+                    )}
+                </figure>
+                <h3>{cardData?.heading}</h3>
+                <p>
+                    {cardData?.excerpt}
+                </p>
+            </div>
             <footer>
                 <button>
                     More Info

@@ -146,13 +146,20 @@ export const fxOpenDrawer = keyframes`
     animation-timing-function: ease-out;
   }
 `
-
 export const fxHideMenuButtonBox = keyframes`
     0% {
         transform: translateY(0);
     }
     100% {
         transform: translateY(75px);
+    }
+`
+export const fxShowMenuButtonBox = keyframes`
+    0% {
+        transform: translateY(75px);
+    }
+    100% {
+        transform: translateY(0);
     }
 `
 export const fxFlickerIn = keyframes`

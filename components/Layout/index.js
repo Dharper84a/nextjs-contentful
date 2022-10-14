@@ -28,13 +28,11 @@ export const Portal = (props) => {
 
 export const Overlay = (props) => {
     const overlayType = props?.type || 'modal';
-    const transitionState = props?.transitionState || 'normal';
+    const transitionState = props?.transitionState || 'closed';
 
     const openingDurationMS = props?.transitionTimings?.opening ? parseInt(props.transitionTimings.opening) / 1000 : 0;
     const closingDurationMS = props?.transitionTimings?.closing ? parseInt(props.transitionTimings.closing) / 1000 : 0;
-    console.log('MenuState', transitionState)
-    console.log('type', overlayType);
-    
+   
     return (
         <Portal type={overlayType}>
             <OverlayContainer>

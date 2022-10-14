@@ -9,10 +9,26 @@ const HeaderMenu = (props) => {
 
     return(
         <MenuContainer>
+            <span>Menu</span>
             <nav>
                 <Link href="#">
                     <a title="View dates and times of regular church services">
                         Schedule
+                    </a>
+                </Link>
+                <Link href="#">
+                    <a>
+                        Beliefs and Values
+                    </a>
+                </Link>
+                <Link href="#">
+                    <a>
+                        Structure and Groups
+                    </a>
+                </Link>
+                <Link href="#">
+                    <a>
+                        Events
                     </a>
                 </Link>
             </nav>

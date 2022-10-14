@@ -1,5 +1,5 @@
 import styled, { css,keyframes } from "styled-components";
-import {fxHideMenuButtonBox, fxFlickerIn} from '../../../styles/globalStyles';
+import {fxHideMenuButtonBox, fxShowMenuButtonBox, fxFlickerIn} from '../../../styles/globalStyles';
 
 export const SiteIcon = styled.div`
     display: none;
@@ -34,30 +34,14 @@ export const ComponentBox = styled.header`
     width: 100%;
     height: 8px;
     background-color: ${({ theme }) => theme.colors.pastelGreen};
-    ${props => props.transitionState === 'opening' && css`
+    ${props => props.transitionState === 'open' && css`
     animation: ${fxHideMenuButtonBox} 0.1s linear both;
     `}
-    ${props => props.transitionState === 'closed' && css`
-    animation: ${fxHideMenuButtonBox} 0.3s linear 0.1s reverse both;
+    ${props => props.transitionState === 'closing' && css`
+    animation: ${fxShowMenuButtonBox} 0.1s linear 0.2s both;
     `}
-    @media ${({theme}) => theme.device.iphones} {
-        ${({ theme }) => theme.layout.content};
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background-color: ${({ theme }) => theme.colors.background.light};
-        a.site-title {
-            width: 100%;
-            padding-bottom: 0.5rem;
-            color: ${({ theme }) => theme.colors.onyx};
-            font-size: ${({ theme }) => theme.helpers.fontClamp(24, 48)};
-            font-weight: 400;
-            text-align: center;
-        }
-        img {
-            animation: ${fxFlickerIn} 2s linear both;
-        }
+    @media ${({theme}) => theme.device.tablets} {
+        height: 80px;
     }
     
 `;

@@ -19,6 +19,22 @@ const fxOpen = keyframes`
   }
 `
 export const MenuContainer = styled.div`
+    text-align: center;
+    span {
+        font-size: ${({theme}) => theme.helpers.fontClamp(26, 32)};
+        font-weight: 700;
+    }
+    nav {
+        display: grid;
+        justify-content: center;
+        gap: 24px;
+        padding-top: 32px;
+        text-align: center;
+        a {
+            color: ${({theme}) => theme.colors.text.link};
+            font-size: ${({theme}) => theme.helpers.fontClamp(22, 26)};
+        }
+    }
     header {
         display: flex;
         justify-content: space-between;
