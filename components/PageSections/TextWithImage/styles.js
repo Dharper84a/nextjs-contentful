@@ -55,52 +55,14 @@ export const ComponentBox = styled.div`
                 margin-top: 0;
             }
         }
+        ${props => props.imageOnLeft ? cssImageLeft : cssImageRight};
     }
-    @media ${({theme}) => theme.device.largePhones} {
+    @media ${({theme}) => theme.device.tablets} {
         gap: 48px;
         padding-top: 64px;
         padding-bottom: 64px;
-    }
-`
-export const TextWithImageContainer = styled.div`
-    ${({theme}) => theme.layout.container};
-    display: flex;
-    overflow: hidden;
-    margin: 0 auto;
-    
-    ${props => props.imageOnLeft ? cssImageLeftBgColor : cssImageRightBgColor};
-`
-
-export const Inner = styled.div`
-    ${({theme}) => theme.layout.content};
-    margin-top: 45px;
-    margin-bottom: 45px;
-    position: relative;
-    z-index: ${({theme}) => theme.layers.content};
-    display: grid;
-    gap: 90px;
-    figure {
-        position: relative;
-        display: flex;
-        width: 100%;
-        max-width: 800px;
-        height: 400px;
-        border-radius: 3px;
-        span {
-            border-radius: 3px;
+        figure {
+            min-height: 400px;
         }
     }
-    aside {
-        width: 100%;
-        max-width: 650px;
-        height: 400px;
-        h2, p {
-            color: ${({theme}) => theme.colors.text.light};
-        }
-        h2 {
-            margin: 0 0 16px 0;
-        }
-    }
-    ${props => props.imageOnLeft ? cssImageLeft : cssImageRight};
-    
 `

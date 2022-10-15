@@ -17,6 +17,7 @@ const COLOR_REF = {
     lightPastelGreen: '#D9EED9',
     darkPastelGreen: '#90ba90',
     deepGreen: '#70AC70',
+    brightGreen: '#23d5ab',
     // blues
     blue: "#0096FF",
     bluePurple: "#5D3FD3",

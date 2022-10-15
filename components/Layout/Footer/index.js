@@ -15,9 +15,14 @@ const Footer = (props) => {
                             Donate
                         </a>
                     </Link>
-                    <Link href="/legal">
+                    <Link href="/community-center">
+                            <a title="Read about Westlink's community center, it's capabilities and avaliablility.">
+                                Community Center
+                            </a>
+                        </Link>
+                    <Link href="/terms-and-policies">
                         <a title="Legal and business information">
-                            Legal
+                            Terms and Policies
                         </a>
                     </Link>
                 </nav>
@@ -37,7 +42,7 @@ const Footer = (props) => {
                 </address>
                 <div className="legal-copy">
                     <p>
-                        &copy;Copyright {new Date().getFullYear()} Westlink Church of Christ.
+                        &copy; Copyright {new Date().getFullYear()} Westlink Church of Christ.
                     </p>
                     {/* <p>
                         Created with <FontAwesomeIcon icon={faHeart} /> by Donald Harper

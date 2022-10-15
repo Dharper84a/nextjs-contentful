@@ -74,11 +74,10 @@ export const GlobalStyle = createGlobalStyle`
         color: ${({theme}) => theme.colors.text.link};
         text-decoration: none;
         transition: all 0.17s ease-in;
-        border-bottom: 1px solid transparent;
         &:hover {
             color: ${({theme}) => theme.colors.blue};
-            /* text-decoration: underline; */
-            border-color: ${({theme}) => theme.colors.blue};
+            text-decoration: underline;
+            text-underline-offset: 5px;
         }
     }
     button {

@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 import RichTextRenderer from '../../Common/RichTextRenderer';
 
-import { ComponentBox, TextWithImageContainer, Inner } from './styles';
+import { ComponentBox } from './styles';
 const TextWithImage = (props) => {
     const {ref, inView, entry} = useInView({
         threshold: 0.60,
@@ -16,7 +16,7 @@ const TextWithImage = (props) => {
     const animationClass = imageOnLeft ? 'slide-in-left' : 'slide-in-right';
     // console.log(imageOnLeft);
     return(
-        <ComponentBox bgColor={imageOnLeft ? 'dark' : 'deepGreen'}>
+        <ComponentBox imageOnLeft={imageOnLeft} bgColor={imageOnLeft ? 'dark' : 'deepGreen'}>
             <figure ref={ref}>
                 {image &&
                 <Image

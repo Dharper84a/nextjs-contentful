@@ -10,7 +10,11 @@ export const SiteIdentity = styled.div`
         gap: 32px;
         a {
             color: ${({theme}) => theme.colors.text.dark};
-            font-size: ${({theme}) => theme.helpers.fontClamp(28, 42)};
+            font-size: ${({theme}) => theme.helpers.fontClamp(28, 32)};
+            &:hover {
+                color: ${({theme}) => theme.colors.text.dark};
+                text-decoration: none;
+            }
         }
     }
 `

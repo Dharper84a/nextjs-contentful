@@ -14,7 +14,6 @@ export const FooterContainer = styled.footer`
     bottom: 0;
     left: 0;
     width: 100%;
-    margin-top: 4rem;
     background: ${({theme}) => theme.colors.background.dark};
 `
 
@@ -24,11 +23,10 @@ export const Inner = styled.div`
     grid-template-areas:
         "NAV ADDRESS"
         "COPY COPY";
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     gap: 32px 16px;
     padding-top: 32px;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
     nav {
         grid-area: NAV;
         a {
@@ -38,7 +36,7 @@ export const Inner = styled.div`
     }
     address {
         grid-area: ADDRESS;
-        text-align: left;
+        text-align: right;
         color: ${({theme}) => theme.colors.text.light};
         font-size: ${({theme}) => theme.helpers.fontClamp(14, 18)};
         font-style: normal;
@@ -59,16 +57,16 @@ export const Inner = styled.div`
             }
         }
     }
-    @media ${({theme}) => theme.devices.smallMacs} {
-        grid-template-columns: 1fr;
-        row-gap: 1rem;
-    }
-    @media ${({theme}) => theme.devices.ipads} {
-        justify-content: center;
-        nav,div,p {
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
+    @media ${({theme}) => theme.device.tablets} {
+        padding-bottom: 16px;
+        nav {
+            a {
+                display: inline-block;
+                padding-right: 16px;
+            }
+        }
+        div.legal-copy {
+            align-self: flex-end;
         }
     }
 `

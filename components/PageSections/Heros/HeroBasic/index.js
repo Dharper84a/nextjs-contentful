@@ -1,25 +1,28 @@
 import * as React from 'react';
 import Image from 'next/image';
 
-import {HeroBasicContainer, Inner} from './styles';
+import {ComponentBox} from './styles';
 const HeroBasic = (props) => {
-    const image = props.fields.image.fields || false;
+    const [variation, setVariation] = React.useState(false);
+    console.log(props);
+    
+    React.useEffect(() => {
+        const string = props.fields.variation.toLowerCase().replace(/ /g,'_');
+        console.log(string);
+        setVariation(string);
+    }, [props])
+    
     return (
-        <HeroBasicContainer>
-            
-            <Inner>
-                {image &&
-                    <Image
-                        src={`https:${image.file.url}`}
-                        layout="fill"
-                        objectFit="cover"
-                        alt={image.description || ''}
-                        priority
-                    />
-                }
-                <h1>{props.fields.title}</h1>
-            </Inner>
-        </HeroBasicContainer>
+        <>
+        {variation &&
+        <ComponentBox variation={variation}>
+            {props.fields.heading &&
+            <h1>{props.fields.heading}</h1>
+            }
+        </ComponentBox>
+        }
+        </>
+        
     )
 }
 

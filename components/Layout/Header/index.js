@@ -59,7 +59,7 @@ const Header = (props) => {
                 />
                 <Link href="/">
                     <a
-                        title="Navigate to Westlink Church of Christ homepage"
+                        title="Go to Westlink Church of Christ homepage"
                         className={inView ? "in-view" : "not-in-view"}
                         ref={ref}
                     >
