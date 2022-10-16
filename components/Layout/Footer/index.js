@@ -20,9 +20,9 @@ const Footer = (props) => {
                                 Community Center
                             </a>
                         </Link>
-                    <Link href="/terms-and-policies">
-                        <a title="Legal and business information">
-                            Terms and Policies
+                    <Link href="/terms-and-privacy">
+                        <a title="Read about Westlinks terms of use and privacy">
+                            Terms and Privacy
                         </a>
                     </Link>
                 </nav>

@@ -56,6 +56,7 @@ const Header = (props) => {
                     alt=""
                     width={48}
                     height={48}
+                    priority
                 />
                 <Link href="/">
                     <a

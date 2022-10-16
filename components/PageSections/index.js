@@ -13,6 +13,7 @@ import TextWithGraphic from './TextWithGraphic';
 import CardGrid from './CardGrid';
 import FeaturedPerson from './FeaturedPerson';
 import Slider from './Slider';
+import RichText from './RichText';
 
 const PageSections = ({sections}) => {
     
@@ -33,6 +34,8 @@ const PageSections = ({sections}) => {
                 return <FeaturedPerson {...section} key={key} />
             case 'pageSectionSlider':
                 return <Slider {...section} key={key} />
+            case 'pageSectionRichText':
+                return <RichText {...section} key={key} />
             default: return <div key={key}>SECTION NOT FOUND</div>
         }
     }

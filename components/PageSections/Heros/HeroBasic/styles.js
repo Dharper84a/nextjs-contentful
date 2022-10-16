@@ -26,6 +26,39 @@ const variations = {
             border-radius: 4px;
             background-color: rgba(255,255,255,0.3);
         }
+    `,
+    dark_black_with_cutout_cross: css`
+        background: ${({theme}) => theme.colors.background.dark};
+        background-image: url('/images/White-Cross.png');
+        background-repeat: no-repeat;
+        background-position: 94% 100%;
+        background-size: 102px 125px;
+        background-blend-mode: soft-light;
+        h1 {
+            color: ${({theme}) => theme.colors.text.light};
+        }
+        @media ${({theme}) => theme.device.tablets} {
+            background-image: url('/images/Triple-White-Cross.png');
+            background-position: calc(100% - 250px) 100%;
+            background-size: 222px 175px;
+        }
+    `,
+    green_with_cutout_cross: css`
+        background: ${({theme}) => theme.colors.background.green};
+        background-image: url('/images/White-Cross.png');
+        background-repeat: no-repeat;
+        background-position: 94% 100%;
+        background-size: 102px 125px;
+        background-blend-mode: soft-light;
+        h1 {
+            color: ${({theme}) => theme.colors.text.dark};
+        }
+        @media ${({theme}) => theme.device.tablets} {
+            background-image: url('/images/Triple-White-Cross.png');
+            background-position: calc(100% - 250px) 100%;
+            background-size: 222px 175px;
+            background-blend-mode: normal;
+        }
     `
 }
 
@@ -39,6 +72,11 @@ export const ComponentBox = styled.div`
         top: 50%;
         left: ${({theme}) => theme.layout.pagePadding.left};
         transform: translateY(-50%);
+    }
+    
+    span {
+        position: absolute;
+
     }
     @media ${({theme}) => theme.device.tablets} {
         height: 300px;
