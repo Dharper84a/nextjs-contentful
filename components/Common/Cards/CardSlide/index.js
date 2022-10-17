@@ -1,5 +1,6 @@
 import React from "react";
 import Image from 'next/image';
+import RichTextRenderer from "../../RichTextRenderer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import deliveryClient from "../../../../lib/datasource/contentful/delivery";
@@ -11,8 +12,6 @@ const CardSlide = (props) => {
     const image = useImage();
     const [state, setState] = React.useState("loading");
     const [cardData, setCardData] = React.useState(null);
-   
-    // console.log('Card Props', props);
 
     React.useEffect(() => {
         if (cardData === null) return () => {};
@@ -28,14 +27,22 @@ const CardSlide = (props) => {
     }, [cardData, image]);
 
     React.useEffect(() => {
+        let ignore = false;
         const awaitCardData = async () => {
             const data = await deliveryClient.entryById(props.sys.id);
-            setCardData(data?.fields || false);
-            image.setImage(data?.fields?.image);   
+            if(!ignore) {
+                setCardData(data?.fields || false);
+                image.setImage(data?.fields?.image);   
+                console.log(data.fields);
+            }
+
         }
 
         awaitCardData();
         
+        return () => {
+            ignore = true;
+        }
     }, [props.sys.id]);
     return (
         <CardComponent componentState={state}>
@@ -58,9 +65,7 @@ const CardSlide = (props) => {
                     )}
                 </figure>
                 <h3>{cardData?.heading}</h3>
-                <p>
-                    {cardData?.excerpt}
-                </p>
+                <RichTextRenderer richText={cardData?.briefDescription} />
             </div>
             <footer>
                 <button>

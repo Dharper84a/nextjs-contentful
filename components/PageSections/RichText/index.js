@@ -6,7 +6,7 @@ const RichText = (props) => {
     console.log(props)
     const richText = props.fields?.richText;
     return(
-        <ComponentBox>
+        <ComponentBox reducedWidth={props.fields?.reducedWidth || false}>
             {richText &&
             <RichTextRenderer richText={richText} />
             }

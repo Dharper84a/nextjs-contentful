@@ -34,11 +34,14 @@ export const ComponentBox = styled.div`
     aside {
         width: 100%;
         max-width: 650px;
-        h2, p {
+        h2,h3 , p {
             color: ${({theme}) => theme.colors.text.light};
         }
         h2 {
             margin: 24px 0 16px 0;
+        }
+        h3 {
+            margin: 24px 0 8px 0;
         }
     }
     @media ${({theme}) => theme.device.largePhones} {
