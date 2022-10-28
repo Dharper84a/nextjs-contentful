@@ -7,7 +7,7 @@ const errorProps = {
         errorTitle: 'Page Not Found',
         errorText: 'I was not able to find the page you wanted.',
         errorDetails: <p>
-            Contrary to popular belief trying again later will <strong>NOT</strong> solve this problem! Other websites lie to keep you on their site longer and for additional future visits.<br/><small><em>Shhh.. It's an industry secret trick.</em> &#x1F910;</small>
+            Contrary to popular belief trying again later will <strong>NOT</strong> solve this problem! Other websites lie to keep you on their site longer and for additional future visits.<br/><small><em>Shhh.. It&apos;s an industry secret trick.</em> &#x1F910;</small>
         </p>
     },
     500: {
