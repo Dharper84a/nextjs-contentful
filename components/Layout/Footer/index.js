@@ -16,13 +16,8 @@ const Footer = (props) => {
                         </a>
                     </Link>
                     <Link href="/community-center">
-                            <a title="Read about Westlink's community center, it's capabilities and avaliablility.">
-                                Community Center
-                            </a>
-                        </Link>
-                    <Link href="/terms-and-privacy">
-                        <a title="Read about Westlinks terms of use and privacy">
-                            Terms and Privacy
+                        <a title="Read about Westlink's community center, it's capabilities and avaliablility.">
+                            Community Center
                         </a>
                     </Link>
                 </nav>
@@ -42,7 +37,17 @@ const Footer = (props) => {
                 </address>
                 <div className="legal-copy">
                     <p>
-                        &copy; Copyright {new Date().getFullYear()} Westlink Church of Christ.
+                        <Link href="/terms-of-use">
+                            <a title="Read Westlinks terms of use statement">
+                                Terms of Use
+                            </a>
+                        </Link>
+                        <Link href="/privacy-policy">
+                            <a title="Read Westlinks privacy policy statement">
+                                Privacy Policy
+                            </a>
+                        </Link><br/>
+                        &copy; Copyright {new Date().getFullYear()} Westlink Church of Christ
                     </p>
                     {/* <p>
                         Created with <FontAwesomeIcon icon={faHeart} /> by Donald Harper

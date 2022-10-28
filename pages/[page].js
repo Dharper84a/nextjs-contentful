@@ -1,0 +1,76 @@
+import * as React from 'react';
+import { useRouter } from 'next/router';
+import deliveryClient from '../lib/datasource/contentful/delivery';
+
+import Layout from '../components/Layout';
+import PageSections from '../components/PageSections';
+
+const PagesPage = (props) => {
+    const router = useRouter();
+    if(router.isFallback) {
+        return <div>Loading...</div>
+    }
+    console.log('router', router);
+    console.log('PagesPage', props);
+    return (
+        <Layout>
+            {props?.fields?.pageSections && 
+            <PageSections sections={props.fields?.pageSections} />
+            }
+        </Layout>
+    )
+}
+
+export default PagesPage;
+
+export async function getStaticPaths() {
+    console.log('pages/[page].js')
+    const paths = [];
+    const endpoints = await deliveryClient.endpoints('page');
+
+    endpoints.forEach((endpoint) => {
+        paths.push({
+            params: {page: endpoint}
+        })
+    })
+
+    // console.log('paths', paths)
+    return {
+        paths: paths,
+        fallback: true
+    }
+}
+
+export async function getStaticProps({params}) {
+    try{
+        const pageData = await deliveryClient.getPage(params.page);
+
+        if(pageData) {
+            return {
+                props: {...pageData},
+                revalidate: 60
+            }
+        } else {
+            return {
+                notFound: true
+            }
+        }
+    }catch(e) {
+        console.log('ERROR - getStaticProps');
+        console.log(e);
+        return {
+            notFound: true
+        }
+    }
+ 
+
+    // return await deliveryClient.entry('page', 'slug', params.page).then((entry) => {
+    //     return {
+    //         props: { ...entry },
+    //         revalidate: 30,
+    //     }
+    // }).catch((err) => {
+    //     console.log('ERROR', err)
+    //     return { notFound: true }
+    // });
+}

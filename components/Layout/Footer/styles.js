@@ -46,9 +46,13 @@ export const Inner = styled.div`
         grid-area: COPY;
         text-align: center;
         p {
-            color: ${({theme}) => theme.colors.text.light};
-            font-size: ${({theme}) => theme.helpers.fontClamp(14, 18)};
+            color: ${({theme}) => theme.colors.darkGray};
+            font-size: 14px;
             margin: 0 0 4px 0;
+            a {
+                padding: 0 8px;
+                font-size: 14px;
+            }
             svg {
                 padding: 0 4px;
                 width: 16px;

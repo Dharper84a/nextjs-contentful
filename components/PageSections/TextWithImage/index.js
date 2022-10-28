@@ -37,7 +37,6 @@ const TextWithImage = (props) => {
                 {richText &&
                 <RichTextRenderer richText={richText} />
                 }
-                
             </aside>
         </ComponentBox>
     )
