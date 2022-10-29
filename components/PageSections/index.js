@@ -14,11 +14,13 @@ import CardGrid from './CardGrid';
 import FeaturedPerson from './FeaturedPerson';
 import Slider from './Slider';
 import RichText from './RichText';
+import Ministers from './Ministers';
 
 const PageSections = ({sections}) => {
     
     const getSection = (section, key) => {
         // console.log('Section', section);
+        const fields = section.fields;
         switch(section.sys.contentType.sys.id) {
             case 'pageSectionHeroFullWidth':
                 return <HeroFullWidth {...section} key={key} />
@@ -29,13 +31,16 @@ const PageSections = ({sections}) => {
             case 'pageSectionTextWithGraphic':
                 return <TextWithGraphic {...section} key={key} />
             case 'pageSectionCardGrid':
-                return <CardGrid {...section} key={key} />
+                // return <div>CARD GRID</div>
+                return <CardGrid heading={fields.heading} textStringified={JSON.stringify(fields.text)} cards={fields.cards} layout={fields.layout} key={key} />
             case 'pageSectionFeaturedPerson':
                 return <FeaturedPerson {...section} key={key} />
             case 'pageSectionSlider':
                 return <Slider {...section} key={key} />
             case 'pageSectionRichText':
                 return <RichText {...section} key={key} />
+            case 'pageSectionMinisters':
+                return <Ministers {...section.fields} key={key} />
             default: return <div key={key}>SECTION NOT FOUND</div>
         }
     }

@@ -20,14 +20,5 @@ export default {
     twitter: {
         cardType: 'summary_large_image',
     },
-    additionalLinkTags: [
-        {
-            rel: 'preload',
-            href: 'https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;700&display=swap',
-            as: 'font',
-            type: 'font/woff2',
-            crossOrigin: 'anonymous'
-        }
-    ]
 }
 // https://images.ctfassets.net/pgcwy1w4oyl3/56602r4XsQ8lN6KJUCAaBK/4e73eba5710e0b5fb741e7ea9e033097/Default-Social-Image.jpg

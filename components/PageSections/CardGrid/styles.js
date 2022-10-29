@@ -7,8 +7,9 @@ export const CardGridContainer = styled.div`
 
 export const Inner = styled.div`
     ${({theme}) => theme.layout.content};
-    p {
-        margin-bottom: 2.5rem;
+    header {
+        max-width: 650px;
+        margin-bottom: 32px;
     }
 `
 

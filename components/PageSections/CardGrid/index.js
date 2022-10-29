@@ -1,26 +1,21 @@
 import * as React from 'react';
 
-import Cards from '../../Cards';
+import RichTextRenderer from '../../Common/RichTextRenderer';
+import CardsResolver from '../../Common/Cards/resolver';
+
 import { CardGridContainer, Inner, Grid } from './styles';
 const CardGrid = (props) => {
-    // console.log('CardGrid', props);
-    const getLayout = () => {
-        switch(props.fields.layout) {
-            case 'Two Per Row':
-                return 'layout--50';
-            default:
-                return 'layout--33';
-        }
-    }
-
-    const layout = getLayout();
+    const layout = props.layout === 'Two Per Row' ? 'layout--50' : 'layout--33';
+    const text = JSON.parse(props.textStringified);
     return(
         <CardGridContainer>
             <Inner>
-                <h2>{props.fields.heading}</h2>
-                <p>{props.fields.text}</p>
+                <header>
+                    <h2>{props.heading}</h2>
+                    <RichTextRenderer richText={text} />
+                </header>
                 <Grid className={layout}>
-                    <Cards cards={props.fields.cards} />
+                    <CardsResolver cards={props.cards} />
                 </Grid>
             </Inner>
         </CardGridContainer>

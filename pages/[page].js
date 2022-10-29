@@ -16,18 +16,33 @@ const PagesPage = (props) => {
 
     const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
     const pageUrl = hostname !== null ? hostname + router.asPath : null;
+
+    const hasSocialImage = props.fields.pageSocialImage ? true : false;
+    const seoProps = {
+        title: props.fields.metaTitle,
+        description: props.fields?.metaDescription,
+        canonical: pageUrl,
+        openGraph: {
+            url: pageUrl,
+            title: props.fields.metaTitle,
+            description: props.fields?.metaDescription,
+            images: [],
+        }
+    }
+
+    if(hasSocialImage) {
+        seoProps.openGraph.images.push({
+            url: props.fields.pageSocialImage.fields.file.url,
+            width: props.fields.pageSocialImage.fields.file.details.image.width,
+            height: props.fields.pageSocialImage.fields.file.details.image.height,
+            alt: props.fields.pageSocialImage.fields.description,
+        })
+    } else {
+        delete seoProps.openGraph.images;
+    }
     return (
         <>
-        <NextSeo
-            title={props.fields.metaTitle}
-            description={props.fields?.metaDescription}
-            canonical={pageUrl}
-            openGraph={{
-                url: pageUrl,
-                title: props.fields.metaTitle,
-                description: props.fields?.metaDescription,
-            }}
-        />
+        <NextSeo {...seoProps}/>
         <Layout>
             {props?.fields?.pageSections && 
             <PageSections sections={props.fields?.pageSections} />
