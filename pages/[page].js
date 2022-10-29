@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 import deliveryClient from '../lib/datasource/contentful/delivery';
 
 import Layout from '../components/Layout';
@@ -12,12 +13,27 @@ const PagesPage = (props) => {
     }
     console.log('router', router);
     console.log('PagesPage', props);
+
+    const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
+    const pageUrl = hostname !== null ? hostname + router.asPath : null;
     return (
+        <>
+        <NextSeo
+            title={props.fields.metaTitle}
+            description={props.fields?.metaDescription}
+            canonical={pageUrl}
+            openGraph={{
+                url: pageUrl,
+                title: props.fields.metaTitle,
+                description: props.fields?.metaDescription,
+            }}
+        />
         <Layout>
             {props?.fields?.pageSections && 
             <PageSections sections={props.fields?.pageSections} />
             }
         </Layout>
+        </>
     )
 }
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import deliveryClient from '../../lib/datasource/contentful/delivery';
-
+import { NextSeo } from 'next-seo';
 import Layout from '../../components/Layout';
 import PageSections from '../../components/PageSections';
 import Event from '../../components/Event';
@@ -13,10 +13,24 @@ const PagesEvent = (props) => {
     }
     console.log('router', router);
     console.log('PagesEvent', props);
+
+    const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
+    const pageUrl = hostname !== null ? hostname + router.asPath : null;
+
     return (
+        <>
+        <NextSeo
+            title={props.fields.eventName}
+            canonical={pageUrl}
+            openGraph={{
+                url: pageUrl,
+                title: props.fields.metaTitle,
+            }}
+        />
         <Layout>
             <Event {...props} />
         </Layout>
+        </>
     )
 }
 
